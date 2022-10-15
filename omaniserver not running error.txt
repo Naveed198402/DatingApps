@@ -1,0 +1,6 @@
+ * Go to the VSCode settings (File >
+Preferences >
+Settings).  * Search with the keywords omnisharp use global mono to locate the configuration.  * Change the value to never from either auto or always.  * REMEMBER to restart the VSCode to activate the change (I restarted it twice to be sure). 
+
+
+https://www.faqcode4u.com/faq/385655/visual-studio-code-mac-os-x-omnisharp-server-is-not-running
