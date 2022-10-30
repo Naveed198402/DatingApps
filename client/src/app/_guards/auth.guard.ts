@@ -1,0 +1,37 @@
+import { Injectable } from '@angular/core';
+import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { map, observable, Observable, tap } from 'rxjs';
+import { AccountService } from '../_services/account.service';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AuthGuard implements CanActivate {
+  constructor(private accountService: AccountService, private toastr: ToastrService){}
+  canActivate(): Observable<boolean> {
+    return this.accountService.currentUser$.pipe(
+      map((user: any) => {
+        if (user) return true;
+        this.toastr.error('You shall not pass!');
+        return false;
+      })
+    )
+  }
+
+//   canActivate(): Observable<boolean>  {
+//     return this.accountService.currentUser$.pipe(
+//       tap(user => { 
+//         if (user === undefined) this.toastr.error('You shall not pass!');
+// // your case should be:
+// // if (user === undefined) this.toastr.error('You shall not pass!');
+//       }),
+//       map((user: any) => {
+//        return user ? true : false;
+//       })
+
+//     );
+
+// }
+  
+}
