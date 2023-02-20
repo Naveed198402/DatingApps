@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgxGalleryAnimation, NgxGalleryImage, NgxGalleryOptions } from '@kolkov/ngx-gallery';
@@ -14,7 +15,8 @@ export class MemberDetailComponent implements OnInit {
   galleryOptions: NgxGalleryOptions[] | any;
   galleryImages: NgxGalleryImage[] | any;
 
-  constructor(private memberService: MembersService, private route: ActivatedRoute) { }
+  constructor(private memberService: MembersService, private route: ActivatedRoute,
+              private datePipe: DatePipe ) { }
 
   ngOnInit(): void {
     this.loadMember();
@@ -51,5 +53,8 @@ export class MemberDetailComponent implements OnInit {
       this.galleryImages = this.getImages();
     })
   }
+
+  
+  
 
 }
